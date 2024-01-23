@@ -3,10 +3,18 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useMap } from "./hooks";
 import { find } from "./api";
+import pin from './assets/pin.svg'
+import { icon } from "leaflet";
 
 function App() {
   const { position } = useMap();
   const data = find();
+  console.log("🚀 ~ App ~ data:", data)
+  const PinMarker = icon({
+    iconUrl: pin,
+    iconSize: [38, 46],
+  });
+
   return (
     <>
       {/* component */}
@@ -23,7 +31,7 @@ function App() {
           <div className='relative w-full h-full inset-0 max-h-screen max-w-screen'>
             <MapContainer
               center={position}
-              zoom={16}
+              zoom={20}
               scrollWheelZoom={true}
               style={{ minHeight: "100vh", minWidth: "100vw" }}
             >
@@ -31,16 +39,16 @@ function App() {
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
-              <Marker position={position}>
+              {/* <Marker position={position} icon={PinMarker}>
                 <Popup>
                   A pretty CSS3 popup. <br /> Easily customizable.
                 </Popup>
-              </Marker>
+              </Marker> */}
               {data?.map((marker: any) => (
                 <Marker
-                  position={[marker.x, marker.y]}
-                  // icon={chivoPin}
-                  key={marker.atm_id}
+                  position={[marker.y, marker.x]}
+                  icon={PinMarker}
+                  key={marker.y}
                 // eventHandlers={{
                 //   click: () => {
                 //     setSelected(marker.atm_id);
