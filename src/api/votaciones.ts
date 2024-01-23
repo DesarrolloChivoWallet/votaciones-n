@@ -10,7 +10,7 @@ export type Entries<T> = {
   [K in keyof T]: [K, T[K]];
 }[keyof T][];
 
-export function find(params: FilterParams = { deparment: "", minucipality: "", votingCenter: "" }) {
+export function find(params: FilterParams = {}) {
   const entries = Object.entries(params) as Entries<FilterParams>;
 
   if (entries.length === 0) return data;
@@ -19,9 +19,9 @@ export function find(params: FilterParams = { deparment: "", minucipality: "", v
     let condition = true;
 
     for (const entry of entries) {
-      if (!entry) break
+      if (!entry || !entry[1]) break
 
-      const value = entry[1]?.toUpperCase()
+      const value = entry[1].toUpperCase()
 
       switch (entry[0]) {
         case "deparment":
@@ -33,7 +33,7 @@ export function find(params: FilterParams = { deparment: "", minucipality: "", v
           break;
 
         default:
-          condition = condition && item.centro_de_votacion === value;
+          condition = condition && item.centro_de_votacion.includes(value);
           break;
       }
     }
