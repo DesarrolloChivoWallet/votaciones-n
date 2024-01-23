@@ -19,7 +19,7 @@ export function find(params: FilterParams = {}) {
     let condition = true;
 
     for (const entry of entries) {
-      if (!entry || !entry[1]) break
+      if (!entry || !entry[1]) continue
 
       const value = entry[1].toUpperCase()
 
