@@ -10,12 +10,12 @@ export type Entries<T> = {
   [K in keyof T]: [K, T[K]];
 }[keyof T][];
 
-export function find(params: FilterParams) {
+export function find(params: FilterParams = { deparment: "", minucipality: "", votingCenter: "" }) {
   const entries = Object.entries(params) as Entries<FilterParams>;
 
   if (entries.length === 0) return data;
 
-  data.filter((item) => {
+  return data.filter((item) => {
     let condition = true;
 
     for (const entry of entries) {
