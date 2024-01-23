@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import { useMap } from "./hooks";
 import { find } from "./api";
 import pin from './assets/pin.svg'
+import dummyimage from './assets/dummy.svg'
 import { icon } from "leaflet";
 
 function App() {
@@ -55,27 +56,44 @@ function App() {
                 //   },
                 // }}
                 >
-                  <Popup className="w-auto h-auto">
-                    <div className="flex w-auto h-auto">
+                  <Popup >
+                    <div className="flex h-auto justify-start items-start w-[300px] flex-row ">
                       <img
-                        className="rounded"
-                        src={marker.thubmnail}
+                        className="rounded-lg"
+                        src={dummyimage}
                         alt=""
-                        width="120px"
+                        width="80px"
                         height="50px"
                       />
-                      <div className="w-full ml-2">
-                        <span className="text-gray-500 block text-[10px] my-1">
-                          Tipo de Chivo: {marker.catergory}
+                      <div className="w-full ml-2 flex flex-col gap-y-1">
+                        <h3 className=" text-md font-medium text-[#101A3C] ">
+                          {marker.centro_de_votacion}
+                        </h3>
+
+                        <span className="font-medium  text-xs">
+                          Departamento: {marker.departamento}
                         </span>
-                        <span className="bold block text-[12px] my-1">{marker.place}</span>
-                        <span className="text-gray-500 block text-[10px] my-1">
-                          {marker.address}
+                        <span className="font-medium  text-xs">
+                          Municipio: {marker.municipio}
                         </span>
-                        <span className="bold block text-[10px] my-1">
-                          {marker.municipality} - {marker.departament}
+                        <span className="font-medium  text-xs">
+                          Distrito: {marker.distrito}
                         </span>
                       </div>
+                    </div>
+                    <div className="flex h-auto justify-start mt-2 items-start w-[300px] flex-col ">
+                      <span className="font-medium">
+                        Meta de contactos: {marker.meta_de_contactos}
+                      </span>
+                      <span className="font-medium">
+                        JRV 2024: {marker.jrv_2024}
+                      </span>
+                      <span className="font-medium">
+                        JRV No Actualizada: {marker.jrv_no_actualizada}
+                      </span>
+                      <span className="font-medium">
+                        Centro Focal: {marker.centro_focal}
+                      </span>
                     </div>
                   </Popup>
                 </Marker>
