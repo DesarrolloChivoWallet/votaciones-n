@@ -1,6 +1,5 @@
 import logo from './assets/n-logo.svg';
-
-
+import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 function App() {
 
   return (
@@ -15,8 +14,23 @@ function App() {
             </h2>
           </div>
         </div>
-        <div className="absolute inset-0 bg-gray-900 z-0">
+        {/* <div className="absolute inset-0 bg-gray-900 z-0"> */}
+        <div className='relative w-full h-full inset-0 max-h-screen max-w-screen'>
+          <MapContainer center={[51.505, -0.09]} zoom={13}
+            scrollWheelZoom={false}
+            className='box max-h-60'>
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={[51.505, -0.09]}>
+              <Popup>
+                A pretty CSS3 popup. <br /> Easily customizable.
+              </Popup>
+            </Marker>
+          </MapContainer>
         </div>
+        {/* </div> */}
         {/* <div className="container px-5 py-24 mx-auto flex">
           <div className="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
             <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">
@@ -56,7 +70,7 @@ function App() {
             </p>
           </div>
         </div> */}
-      </section>
+      </section >
     </>
   )
 }
