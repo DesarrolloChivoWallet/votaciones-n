@@ -1,20 +1,22 @@
 import logo from './assets/n-logo.svg';
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { useMap } from "./hooks";
 import { find } from "./api";
 import pin from './assets/pin.svg'
 import dummyimage from './assets/dummy.svg'
 import { icon } from "leaflet";
 import data from "./data/votaciones.json";
 import { useEffect, useState } from 'react';
+import axios from "axios";
 
-const ListItem = (item: any) => {
-  return (<span className='text-wrap cursor-pointer hover:bg-gray-100 p-2 rounded-md'>{item.centro_de_votacion}</span>)
-}
+
 function App() {
-  const { position } = useMap();
+  // const map = useMap();
   const [search, setSearch] = useState("")
+  const [position, setPosition] = useState({
+    lat: 13.691316,
+    lng: -89.236491,
+  });
   const [dataFiltered, setDataFiltered] = useState<any[]>([])
   console.log("🚀 ~ App ~ data:", dataFiltered)
   const PinMarker = icon({
@@ -22,15 +24,48 @@ function App() {
     iconSize: [38, 46],
   });
   useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      ({ coords }) => {
+        console.log("🚀 ~ useEffect ~ coords:", coords)
+        setPosition({ lat: coords.latitude, lng: coords.longitude });
+      },
+      (blocked) => {
+        if (blocked) {
+          const fetch = async () => {
+            try {
+              const { data } = await axios.get("https://ipapi.co/json");
+              setPosition({ lat: data.latitude, lng: data.longitude });
+            } catch (err) {
+              console.error(err);
+            }
+          };
+          fetch();
+        }
+      }
+    );
+  }, []);
+  useEffect(() => {
     setDataFiltered(find({ votingCenter: search }))
   }, [search])
+
+  const RecenterAutomatically = ({ position }: { position: { lat: number, lng: number } }) => {
+    const map = useMap();
+    useEffect(() => {
+      map.setView([position.lat, position.lng], 18);
+    }, [position]);
+    return null;
+  }
+
+  const ListItem = (item: any) => {
+    return (<li onClick={() => { setPosition({ lat: item.y, lng: item.x }); setSearch("") }} className='text-wrap cursor-pointer hover:bg-gray-100 p-2 rounded-md' > {item.centro_de_votacion}</li >)
+  }
 
   return (
     <>
       {/* component */}
       <section className="text-gray-600 body-font relative h-screen w-screen">
         <div className="bg-blue-400 w-full  sticky inset-0 h-[70px] z-10 flex-row">
-          <div className='container h-full w-full flex justify-between mx-auto items-center'>
+          <div className='container px-4 h-full w-full flex justify-between mx-auto items-center'>
             <img src={logo} alt="Nuevas Ideas" className=' h-[50px]' />
             <h2 className='text-white text-bold text-lg'>
               Centros de votaciones - Elecciones 2024
@@ -41,24 +76,29 @@ function App() {
           <div className='relative w-full h-full inset-0 max-h-screen max-w-screen'>
             <MapContainer
               center={position}
-              zoom={20}
+              zoom={16}
+              maxZoom={20}
+              attributionControl={true}
+              zoomControl={false}
+              doubleClickZoom={true}
               scrollWheelZoom={true}
-              style={{ minHeight: "100vh", minWidth: "100vw" }}
-            >
+              style={{ minHeight: "100vh", minWidth: "100vw" }}>
+              <RecenterAutomatically position={position}></RecenterAutomatically>
               <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
+              {/* <MoveCenter lat={newPos.lat} lng={newPos.lng} /> */}
               {/* <Marker position={position} icon={PinMarker}>
                 <Popup>
                   A pretty CSS3 popup. <br /> Easily customizable.
                 </Popup>
               </Marker> */}
-              {data?.map((marker: any) => (
+              {data?.map((marker: any, index: number) => (
                 <Marker
                   position={[marker.y, marker.x]}
                   icon={PinMarker}
-                  key={marker.y}
+                  key={index * Date.now()}
                 // eventHandlers={{
                 //   click: () => {
                 //     setSelected(marker.atm_id);
@@ -109,9 +149,9 @@ function App() {
               ))}
             </MapContainer>
           </div>
-        </div>
-        <div className="container px-4 md:px-0 py-4 mx-auto flex z-30">
-          <div className="lg:w-1/2 bg-white rounded-lg p-4 flex flex-row  w-full mt-10 md:mt-0 relative z-10 shadow-md">
+        </div >
+        <div className="container px-4 py-4 mx-auto flex z-30 ">
+          <div className="lg:w-1/2 bg-white rounded-lg p-4 flex flex-row px-4 w-full mt-10 md:mt-0 relative z-10 shadow-md">
             <div className="relative w-full ">
               <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                 <svg
@@ -137,7 +177,9 @@ function App() {
               />
             </div>
             {search.length != 0 && <div className='shadow-xl w-full mr-4 rounded-lg bg-white absolute flex flex-col mt-12 p-2 overflow-scroll overscroll-hidden max-h-[500px] mx-4'>
-              {dataFiltered.map((item) => ListItem(item))}
+              <ul>
+                {dataFiltered.map((item) => ListItem(item))}
+              </ul>
             </div>}
           </div>
         </div>
