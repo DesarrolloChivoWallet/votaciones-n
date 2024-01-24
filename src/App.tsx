@@ -82,6 +82,7 @@ function App() {
   const handlerDepartamento = (d: any) => {
     console.log("🚀 ~ handlerDepartamento ~ d:", d)
     setDepartamento(d)
+    // setPosition({ lat: d.y, lng: d.x })
     setMunicipio({ value: '', label: '' })
   }
 

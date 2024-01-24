@@ -11,7 +11,9 @@
                 "value": "AHUACHAPAN SUR",
                 "label": "AHUACHAPAN SUR"
             }
-        ]
+        ],
+        "y": 13.929399911728124,
+        "x": -89.83953974610829
     },
     {
         "value": "CABAÑAS",
@@ -25,7 +27,9 @@
                 "value": "CABAÑAS OESTE",
                 "label": "CABAÑAS OESTE"
             }
-        ]
+        ],
+        "y": 13.891353,
+        "x": -88.706314
     },
     {
         "value": "CHALATENANGO",
