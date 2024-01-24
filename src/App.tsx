@@ -8,7 +8,7 @@ import { icon } from "leaflet";
 import data from "./data/votaciones.json";
 import { useEffect, useState } from 'react';
 import axios from "axios";
-
+import { debounce } from "ts-debounce";
 
 function App() {
   // const map = useMap();
@@ -56,8 +56,10 @@ function App() {
     return null;
   }
 
+  // const debouncedFunction = debounce(find, 300);
+
   const ListItem = (item: any) => {
-    return (<li onClick={() => { setPosition({ lat: item.y, lng: item.x }); setSearch("") }} className='text-wrap cursor-pointer hover:bg-gray-100 p-2 rounded-md' > {item.centro_de_votacion}</li >)
+    return (<li onClick={() => { setPosition({ lat: item.y, lng: item.x }); setSearch("") }} className='text-xs cursor-pointer hover:bg-gray-100 p-2 rounded-md text-pretty' > {item.centro_de_votacion}</li >)
   }
 
   return (
@@ -80,6 +82,8 @@ function App() {
               maxZoom={20}
               attributionControl={true}
               zoomControl={false}
+              zoomAnimation={true}
+              fadeAnimation={true}
               doubleClickZoom={true}
               scrollWheelZoom={true}
               style={{ minHeight: "100vh", minWidth: "100vw" }}>
@@ -176,7 +180,7 @@ function App() {
                 placeholder="Buscar centro de votación"
               />
             </div>
-            {search.length != 0 && <div className='shadow-xl w-full mr-4 rounded-lg bg-white absolute flex flex-col mt-12 p-2 overflow-scroll overscroll-hidden max-h-[500px] mx-4'>
+            {search.length != 0 && <div className='shadow-xl  mr-4 rounded-lg bg-white absolute flex flex-col mt-12 p-2 overflow-scroll overscroll-hidden overscroll-x-none max-h-[500px] mx-4'>
               <ul>
                 {dataFiltered.map((item) => ListItem(item))}
               </ul>
