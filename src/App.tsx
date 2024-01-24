@@ -129,21 +129,26 @@ function App() {
                         <span className="font-medium  text-xs">
                           Municipio: {marker.municipio}
                         </span>
-                        <span className="font-medium  text-xs">
-                          Distrito: {marker.distrito}
-                        </span>
+
                       </div>
                     </div>
                     <div className="flex h-auto justify-start mt-2 items-start w-[300px] flex-col ">
+                      {/* <div className='grid grid-cols-2 flex-row gap-x-4 justify-between'> */}
+                      <span className="font-medium  text-xs">
+                        Distrito: {marker.distrito}
+                      </span>
                       <span className="font-medium">
                         Meta de contactos: {marker.meta_de_contactos}
                       </span>
+                      {/* </div> */}
+                      {/* <div className='grid grid-cols-2 flex-row gap-x-4 justify-between'> */}
                       <span className="font-medium">
                         JRV 2024: {marker.jrv_2024}
                       </span>
                       <span className="font-medium">
                         JRV No Actualizada: {marker.jrv_no_actualizada}
                       </span>
+                      {/* </div> */}
                       <span className="font-medium">
                         Centro Focal: {marker.centro_focal}
                       </span>
