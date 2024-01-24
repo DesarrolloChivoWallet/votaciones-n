@@ -1,0 +1,254 @@
+[
+    {
+        "value": "AHUACHAPAN",
+        "label": "AHUACHAPAN",
+        "municipios": [
+            {
+                "value": "AHUACHAPAN CENTRO",
+                "label": "AHUACHAPAN CENTRO"
+            },
+            {
+                "value": "AHUACHAPAN SUR",
+                "label": "AHUACHAPAN SUR"
+            }
+        ]
+    },
+    {
+        "value": "CABAÑAS",
+        "label": "CABAÑAS",
+        "municipios": [
+            {
+                "value": "CABAÑAS ESTE",
+                "label": "CABAÑAS ESTE"
+            },
+            {
+                "value": "CABAÑAS OESTE",
+                "label": "CABAÑAS OESTE"
+            }
+        ]
+    },
+    {
+        "value": "CHALATENANGO",
+        "label": "CHALATENANGO",
+        "municipios": [
+            {
+                "value": "CHALATENANGO CENTRO",
+                "label": "CHALATENANGO CENTRO"
+            },
+            {
+                "value": "CHALATENANGO NORTE",
+                "label": "CHALATENANGO NORTE"
+            },
+            {
+                "value": "CHALATENANGO SUR",
+                "label": "CHALATENANGO SUR"
+            }
+        ]
+    },
+    {
+        "value": "CUSCATLAN",
+        "label": "CUSCATLAN",
+        "municipios": [
+            {
+                "value": "CUSCATLAN NORTE",
+                "label": "CUSCATLAN NORTE"
+            },
+            {
+                "value": "CUSCATLAN SUR",
+                "label": "CUSCATLAN SUR"
+            }
+        ]
+    },
+    {
+        "value": "LA LIBERTAD",
+        "label": "LA LIBERTAD",
+        "municipios": [
+            {
+                "value": "LA LIBERTAD CENTRO",
+                "label": "LA LIBERTAD CENTRO"
+            },
+            {
+                "value": "LA LIBERTAD COSTA",
+                "label": "LA LIBERTAD COSTA"
+            },
+            {
+                "value": "LA LIBERTAD ESTE",
+                "label": "LA LIBERTAD ESTE"
+            },
+            {
+                "value": "LA LIBERTAD NORTE",
+                "label": "LA LIBERTAD NORTE"
+            },
+            {
+                "value": "LA LIBERTAD OESTE",
+                "label": "LA LIBERTAD OESTE"
+            },
+            {
+                "value": "LA LIBERTAD SUR",
+                "label": "LA LIBERTAD SUR"
+            }
+        ]
+    },
+    {
+        "value": "LA PAZ",
+        "label": "LA PAZ",
+        "municipios": [
+            {
+                "value": "LA PAZ CENTRO",
+                "label": "LA PAZ CENTRO"
+            },
+            {
+                "value": "LA PAZ ESTE",
+                "label": "LA PAZ ESTE"
+            },
+            {
+                "value": "LA PAZ OESTE",
+                "label": "LA PAZ OESTE"
+            }
+        ]
+    },
+    {
+        "value": "LA UNION",
+        "label": "LA UNION",
+        "municipios": [
+            {
+                "value": "LA UNIÓN NORTE",
+                "label": "LA UNIÓN NORTE"
+            },
+            {
+                "value": "LA UNIÓN SUR",
+                "label": "LA UNIÓN SUR"
+            }
+        ]
+    },
+    {
+        "value": "MORAZAN",
+        "label": "MORAZAN",
+        "municipios": [
+            {
+                "value": "MORAZÁN NORTE",
+                "label": "MORAZÁN NORTE"
+            },
+            {
+                "value": "MORAZÁN SUR",
+                "label": "MORAZÁN SUR"
+            }
+        ]
+    },
+    {
+        "value": "SAN MIGUEL",
+        "label": "SAN MIGUEL",
+        "municipios": [
+            {
+                "value": "SAN MIGUEL CENTRO",
+                "label": "SAN MIGUEL CENTRO"
+            },
+            {
+                "value": "SAN MIGUEL NORTE",
+                "label": "SAN MIGUEL NORTE"
+            },
+            {
+                "value": "SAN MIGUEL OESTE",
+                "label": "SAN MIGUEL OESTE"
+            }
+        ]
+    },
+    {
+        "value": "SAN SALVADOR",
+        "label": "SAN SALVADOR",
+        "municipios": [
+            {
+                "value": "SAN SALVADOR CENTRO",
+                "label": "SAN SALVADOR CENTRO"
+            },
+            {
+                "value": "SAN SALVADOR ESTE",
+                "label": "SAN SALVADOR ESTE"
+            },
+            {
+                "value": "SAN SALVADOR NORTE",
+                "label": "SAN SALVADOR NORTE"
+            },
+            {
+                "value": "SAN SALVADOR SUR",
+                "label": "SAN SALVADOR SUR"
+            }
+        ]
+    },
+    {
+        "value": "SAN VICENTE",
+        "label": "SAN VICENTE",
+        "municipios": [
+            {
+                "value": "SAN VICENTE NORTE",
+                "label": "SAN VICENTE NORTE"
+            },
+            {
+                "value": "SAN VICENTE SUR",
+                "label": "SAN VICENTE SUR"
+            }
+        ]
+    },
+    {
+        "value": "SANTA ANA",
+        "label": "SANTA ANA",
+        "municipios": [
+            {
+                "value": "SANTA ANA NORTE",
+                "label": "SANTA ANA NORTE"
+            },
+            {
+                "value": "SANTA ANA CENTRO",
+                "label": "SANTA ANA CENTRO"
+            },
+            {
+                "value": "SANTA ANA OESTE",
+                "label": "SANTA ANA OESTE"
+            },
+            {
+                "value": "SANTA ANA ESTE",
+                "label": "SANTA ANA ESTE"
+            }
+        ]
+    },
+    {
+        "value": "SONSONATE",
+        "label": "SONSONATE",
+        "municipios": [
+            {
+                "value": "SONSONATE NORTE",
+                "label": "SONSONATE NORTE"
+            },
+            {
+                "value": "SONSONATE CENTRO",
+                "label": "SONSONATE CENTRO"
+            },
+            {
+                "value": "SONSONATE OESTE",
+                "label": "SONSONATE OESTE"
+            },
+            {
+                "value": "SONSONATE ESTE",
+                "label": "SONSONATE ESTE"
+            }
+        ]
+    },
+    {
+        "value": "USULUTAN",
+        "label": "USULUTAN",
+        "municipios": [
+            {
+                "value": "USULUTÁN NORTE",
+                "label": "USULUTÁN NORTE"
+            },
+            {
+                "value": "USULUTÁN OESTE",
+                "label": "USULUTÁN OESTE"
+            },
+            {
+                "value": "USULUTÁN ESTE",
+                "label": "USULUTÁN ESTE"
+            }
+        ]
+    }
+]

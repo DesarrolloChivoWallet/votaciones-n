@@ -6,12 +6,17 @@ import pin from './assets/pin.svg'
 import dummyimage from './assets/dummy.svg'
 import { icon } from "leaflet";
 import data from "./data/votaciones.json";
+import departamentos from "./data/departamentos.json";
 import { useEffect, useState } from 'react';
 import axios from "axios";
+import Select from 'react-select'
+
 
 function App() {
   // const map = useMap();
   const [search, setSearch] = useState("")
+  const [municipio, setMunicipio] = useState({ value: '', label: '' })
+  const [departamento, setDepartamento] = useState({ value: '', label: '' })
   const [position, setPosition] = useState({
     lat: 13.691316,
     lng: -89.236491,
@@ -43,14 +48,15 @@ function App() {
       }
     );
   }, []);
+
   useEffect(() => {
-    setDataFiltered(find({ votingCenter: search }))
-  }, [search])
+    setDataFiltered(find({ votingCenter: search, deparment: departamento.value, minucipality: municipio.value }))
+  }, [search, municipio, departamento])
 
   const RecenterAutomatically = ({ position }: { position: { lat: number, lng: number } }) => {
     const map = useMap();
     useEffect(() => {
-      map.setView([position.lat, position.lng], 18);
+      map.setView([position.lat, position.lng], 16);
     }, [position]);
     return null;
   }
@@ -58,7 +64,29 @@ function App() {
   // const debouncedFunction = debounce(find, 300);
 
   const ListItem = (item: any) => {
-    return (<li onClick={() => { setPosition({ lat: item.y, lng: item.x }); setSearch("") }} className='text-xs cursor-pointer hover:bg-gray-100 p-2 rounded-md text-pretty' > {item.centro_de_votacion}</li >)
+    return (<li onClick={() => { setPosition({ lat: item.y, lng: item.x }); setSearch("") }} className='text-sm cursor-pointer hover:bg-gray-100 p-2 hover:rounded-md text-wrap flex  flex-col lg:flex-row gap-x-2 justify-start items-start' >
+      <img
+        className="rounded-lg lg:flex hidden"
+        src={dummyimage}
+        alt=""
+        width="40px"
+        height="38px"
+      />
+      <div>
+        {item.centro_de_votacion}
+        <p className='text-xs'>{item.departamento + ' - ' + item.municipio}</p>
+      </div>
+    </li >)
+  }
+
+  const handlerDepartamento = (d) => {
+    console.log("🚀 ~ handlerDepartamento ~ d:", d)
+    setDepartamento(d)
+    setMunicipio({ value: '', label: '' })
+  }
+
+  const handlerMunicipio = (m) => {
+    setMunicipio(m)
   }
 
   return (
@@ -77,7 +105,7 @@ function App() {
           <div className='relative w-full h-full inset-0 max-h-screen max-w-screen'>
             <MapContainer
               center={position}
-              zoom={16}
+              zoom={15}
               maxZoom={20}
               attributionControl={true}
               zoomControl={false}
@@ -158,9 +186,17 @@ function App() {
             </MapContainer>
           </div>
         </div >
-        <div className="container px-4 py-4 mx-auto flex z-30 ">
-          <div className="lg:w-1/2 bg-white rounded-lg p-4 flex flex-row px-4 w-full mt-10 md:mt-0 relative z-10 shadow-md">
-            <div className="relative w-full ">
+        <div className="grid grid-cols-12 px-2 py-2 mx-auto  z-20 ">
+          <div className=" col-span-12 lg:col-span-4 md:col-span-3 bg-white rounded-lg p-4  px-4 w-full  md:mt-0 relative z-10 shadow-md max-w-[420px]">
+            <div>
+              <label htmlFor="departamentos" className='text-gray-600 text-sm'>Departamento</label>
+              <Select value={departamento} onChange={(el) => { handlerDepartamento(el) }} options={departamentos} className='mb-2 rounded-lg' />
+            </div>
+            <div className='mb-4'>
+              <label htmlFor="municipios" className='text-gray-600 text-sm'>Municipio</label>
+              <Select value={municipio} onChange={(el) => handlerMunicipio(el)} options={departamento?.municipios} className='mb-2 rounded-lg' />
+            </div>
+            <div className="relative w-full flex flex-col  ">
               <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                 <svg
                   className="w-5 h-5 text-gray-500 dark:text-gray-400"
@@ -180,12 +216,12 @@ function App() {
                 id="voice-search"
                 value={search}
                 onChange={(e) => setSearch(e.target?.value)}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 "
+                className="bg-white border border-gray-300 text-gray-900  rounded focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2 h-[36px]"
                 placeholder="Buscar centro de votación"
               />
             </div>
-            {search.length != 0 && <div className='shadow-xl  mr-4 rounded-lg bg-white absolute flex flex-col mt-12 p-2 overflow-scroll overscroll-hidden overscroll-x-none max-h-[500px] mx-4'>
-              <ul>
+            {<div className='mt-2 rounded-lg bg-white scrollbar-hidden  flex flex-col p-2 overflow-scroll overscroll-hidden overscroll-x-none max-h-[45vh] h-auto'>
+              <ul className='divide-y'>
                 {dataFiltered.map((item) => ListItem(item))}
               </ul>
             </div>}
