@@ -8,7 +8,6 @@ import { icon } from "leaflet";
 import data from "./data/votaciones.json";
 import { useEffect, useState } from 'react';
 import axios from "axios";
-import { debounce } from "ts-debounce";
 
 function App() {
   // const map = useMap();
