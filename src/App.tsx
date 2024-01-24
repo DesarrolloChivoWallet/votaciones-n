@@ -16,7 +16,7 @@ function App() {
   // const map = useMap();
   const [search, setSearch] = useState("")
   const [municipio, setMunicipio] = useState({ value: '', label: '' })
-  const [departamento, setDepartamento] = useState({ value: '', label: '' })
+  const [departamento, setDepartamento] = useState({ value: '', label: '', municipios: [{}] })
   const [position, setPosition] = useState({
     lat: 13.691316,
     lng: -89.236491,
@@ -79,13 +79,13 @@ function App() {
     </li >)
   }
 
-  const handlerDepartamento = (d) => {
+  const handlerDepartamento = (d: any) => {
     console.log("🚀 ~ handlerDepartamento ~ d:", d)
     setDepartamento(d)
     setMunicipio({ value: '', label: '' })
   }
 
-  const handlerMunicipio = (m) => {
+  const handlerMunicipio = (m: any) => {
     setMunicipio(m)
   }
 
@@ -194,7 +194,7 @@ function App() {
             </div>
             <div className='mb-4'>
               <label htmlFor="municipios" className='text-gray-600 text-sm'>Municipio</label>
-              <Select value={municipio} onChange={(el) => handlerMunicipio(el)} options={departamento?.municipios} className='mb-2 rounded-lg' />
+              <Select value={municipio} onChange={(el: any) => handlerMunicipio(el)} options={departamento?.municipios} className='mb-2 rounded-lg' />
             </div>
             <div className="relative w-full flex flex-col  ">
               <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -215,7 +215,7 @@ function App() {
                 type="text"
                 id="voice-search"
                 value={search}
-                onChange={(e) => setSearch(e.target?.value)}
+                onChange={(e: any) => setSearch(e.target?.value)}
                 className="bg-white border border-gray-300 text-gray-900  rounded focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2 h-[36px]"
                 placeholder="Buscar centro de votación"
               />
