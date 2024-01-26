@@ -30,7 +30,6 @@ function App() {
   });
   const PinMarketSelected = icon({
     iconUrl: markerSelected,
-    iconSize: [38, 46],
   })
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -100,7 +99,7 @@ function App() {
       {/* component */}
       <section className="text-gray-600 body-font relative h-screen w-screen">
         <div className="bg-blue-400 w-full  sticky inset-0 h-[70px] z-10 flex-row">
-          <div className='container px-4 h-full w-full flex justify-between mx-auto items-center'>
+          <div className=' px-4 h-full w-full flex justify-between mx-auto items-center'>
             <img src={logo} alt="Nuevas Ideas" className=' h-[50px]' />
             <h2 className='text-white text-bold text-lg'>
               Centros de votaciones - Elecciones 2024
