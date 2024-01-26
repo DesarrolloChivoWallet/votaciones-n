@@ -134,12 +134,12 @@ function App() {
                 <Marker
                   position={[marker.y, marker.x]}
                   icon={selected === marker.centro_de_votacion ? PinMarketSelected : PinMarker}
-                  key={index * Date.now()}
-                // eventHandlers={{
-                //   click: () => {
-                //     setSelected(marker.atm_id);
-                //   },
-                // }}
+                  key={marker.centro_de_votacion + Date.now()}
+                  eventHandlers={{
+                    click: () => {
+                      setSelected(marker.centro_de_votacion);
+                    },
+                  }}
                 >
                   <Popup >
                     <div className="flex h-auto justify-start items-start w-[300px] flex-row ">
