@@ -137,6 +137,7 @@ function App() {
                   key={marker.centro_de_votacion + Date.now()}
                   eventHandlers={{
                     click: () => {
+                      console.log(marker.centro_de_votacion)
                       setSelected(marker.centro_de_votacion);
                     },
                   }}
