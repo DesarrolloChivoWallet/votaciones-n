@@ -130,7 +130,7 @@ function App() {
                   A pretty CSS3 popup. <br /> Easily customizable.
                 </Popup>
               </Marker> */}
-              {data?.map((marker: any, index: number) => (
+              {data?.map((marker: any) => (
                 <Marker
                   position={[marker.y, marker.x]}
                   icon={selected === marker.centro_de_votacion ? PinMarketSelected : PinMarker}
