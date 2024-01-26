@@ -10,11 +10,12 @@ import departamentos from "./data/departamentos.json";
 import { useEffect, useState } from 'react';
 import axios from "axios";
 import Select from 'react-select'
-
+import markerSelected from './assets/pin-selected.svg'
 
 function App() {
   // const map = useMap();
   const [search, setSearch] = useState("")
+  const [selected, setSelected] = useState("")
   const [municipio, setMunicipio] = useState({ value: '', label: '' })
   const [departamento, setDepartamento] = useState({ value: '', label: '', municipios: [{}] })
   const [position, setPosition] = useState({
@@ -27,6 +28,10 @@ function App() {
     iconUrl: pin,
     iconSize: [38, 46],
   });
+  const PinMarketSelected = icon({
+    iconUrl: markerSelected,
+    iconSize: [38, 46],
+  })
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       ({ coords }) => {
@@ -64,7 +69,7 @@ function App() {
   // const debouncedFunction = debounce(find, 300);
 
   const ListItem = (item: any) => {
-    return (<li onClick={() => { setPosition({ lat: item.y, lng: item.x }); setSearch("") }} className='text-sm cursor-pointer hover:bg-gray-100 p-2 hover:rounded-md text-wrap flex  flex-col lg:flex-row gap-x-2 justify-start items-start' >
+    return (<li onClick={() => { setPosition({ lat: item.y, lng: item.x }); setSearch(""); setSelected(item.centro_de_votacion) }} className='text-sm cursor-pointer hover:bg-gray-100 p-2 hover:rounded-md text-wrap flex  flex-col lg:flex-row gap-x-2 justify-start items-start' >
       <img
         className="rounded-lg lg:flex hidden"
         src={dummyimage}
@@ -129,7 +134,7 @@ function App() {
               {data?.map((marker: any, index: number) => (
                 <Marker
                   position={[marker.y, marker.x]}
-                  icon={PinMarker}
+                  icon={selected === marker.centro_de_votacion ? PinMarketSelected : PinMarker}
                   key={index * Date.now()}
                 // eventHandlers={{
                 //   click: () => {
