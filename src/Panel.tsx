@@ -26,7 +26,7 @@ function Panel({ url }: { url: string }) {
                 .then(() => {
                 })
                 .catch((error) => {
-                    console.log("🚀 ~ useMemo ~ error:", error)
+                    console.log("🚀 ~ embeddingContext.then ~ error:", error)
                 });
         });
 

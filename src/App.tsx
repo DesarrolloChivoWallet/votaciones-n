@@ -15,13 +15,11 @@ function App() {
   const URL_HUB = 'https://chivo-hub-dev.api.chivowallet.com/api/v1/'
   useEffect(() => {
 
-    console.log("setPanel")
     fetch(`${URL_HUB}voting-dashboard/get-dashboard/1`)
       .then((res) => {
         return res.json();
       })
       .then((response) => {
-        console.log(response);
         const { data } = response
         setPanel1(data?.EmbedUrl)
       });
@@ -31,7 +29,6 @@ function App() {
         return res.json();
       })
       .then((response) => {
-        console.log(response);
         const { data } = response
         setPanel2(data?.EmbedUrl)
       });
@@ -41,7 +38,6 @@ function App() {
         return res.json();
       })
       .then((response) => {
-        console.log(response);
         const { data } = response
         setPanel3(data?.EmbedUrl)
       });
@@ -56,23 +52,10 @@ function App() {
   return (
     <div className='p-4 h-screen w-full'>
       {/* component */}
-      <Tabs >
-        <TabList>
-          <Tab>Panel 1</Tab>
-          <Tab>Panel 2</Tab>
-          <Tab>Panel 3</Tab>
-        </TabList>
-
-        <TabPanel className="h-screen relative">
-          <Panel url={panel1}></Panel>
-        </TabPanel>
-        <TabPanel className="h-screen relative">
-          <Panel url={panel2}></Panel>
-        </TabPanel>
-        <TabPanel className="h-screen relative">
-          <Panel url={panel3}></Panel>
-        </TabPanel>
-      </Tabs>
+      <div className='h-12 bg-black text-white'> ocpione</div>
+      <Panel url={panel1}></Panel>
+      <Panel url={panel2}></Panel>
+      <Panel url={panel3}></Panel>
     </div>
   )
 }
