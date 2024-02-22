@@ -1,5 +1,3 @@
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
 import { useState, useEffect } from 'react';
 import Panel from './Panel';
 
@@ -52,7 +50,7 @@ function App() {
   return (
     <div className='p-4 h-screen w-full'>
       {/* component */}
-      <div className='h-12 bg-black text-white'> ocpione</div>
+      <div className='h-12 flex flex-row'> </div>
       <Panel url={panel1}></Panel>
       <Panel url={panel2}></Panel>
       <Panel url={panel3}></Panel>
