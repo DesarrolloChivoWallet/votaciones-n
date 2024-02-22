@@ -6,9 +6,9 @@ function App() {
   const [panel1, setPanel1] = useState("");
   const [panel2, setPanel2] = useState("");
   const [panel3, setPanel3] = useState("");
-  // const [laoding, setLoading] = useState(false)
-  // const [laoding2, setLoading2] = useState(false)
-  // const [laoding3, setLoading3] = useState(false)
+  // const [viewOne, serViewOne] = useState(false)
+  // const [viewOne, serViewOne] = useState(false)
+  // const [viewOne, serViewOne] = useState(false)
 
   const URL_HUB = 'https://chivo-hub-dev.api.chivowallet.com/api/v1/'
   useEffect(() => {
@@ -42,7 +42,6 @@ function App() {
 
 
 
-
   }, []);
 
 
@@ -50,10 +49,10 @@ function App() {
   return (
     <div className='p-4 h-screen w-full'>
       {/* component */}
-      <div className='h-12 flex flex-row'> </div>
+      <div className='h-12 flex flex-row'>
+
+      </div>
       <Panel url={panel1}></Panel>
-      <Panel url={panel2}></Panel>
-      <Panel url={panel3}></Panel>
     </div>
   )
 }
