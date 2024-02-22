@@ -81,7 +81,7 @@ function App() {
     const num = index;
     const embeddingContext = createEmbeddingContext();
     embeddingContext.then(({ embedDashboard }) => {
-      const container = document.querySelector(`#iframe${num}`) as HTMLElement;
+      const container = (num === 1 ? document.querySelector("#iframe1") : (num === 2 ? document.querySelector("#iframe2") : document.querySelector("#iframe3"))) as HTMLElement;
 
       console.log("🚀 ~ embeddingContext.then ~ container:", container)
       // Create an embedding configuration
