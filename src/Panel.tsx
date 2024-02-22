@@ -1,4 +1,3 @@
-import React from 'react'
 import { useEffect } from 'react';
 import { createEmbeddingContext } from "amazon-quicksight-embedding-sdk";
 type FrameOptions = {
