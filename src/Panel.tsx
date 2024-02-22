@@ -38,7 +38,7 @@ function Panel({ url }: { url: string }) {
         <div
             id=
             "iframe"
-            className="w-full h-full"></div>
+            className="w-full h-full rounded-lg bg-gray-200"></div>
     )
 }
 
