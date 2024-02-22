@@ -4,8 +4,8 @@ import Panel from './Panel';
 
 function App() {
   const [panel1, setPanel1] = useState("");
-  // const [panel2, setPanel2] = useState("");
-  // const [panel3, setPanel3] = useState("");
+  const [panel2, setPanel2] = useState("");
+  const [panel3, setPanel3] = useState("");
   // const [viewOne, serViewOne] = useState(false)
   // const [viewOne, serViewOne] = useState(false)
   // const [viewOne, serViewOne] = useState(false)
@@ -29,7 +29,7 @@ function App() {
       .then((response) => {
         const { data } = response
         console.log("🚀 ~ .then ~ data:", data)
-        // setPanel2(data?.EmbedUrl)
+        setPanel2(data?.EmbedUrl)
       });
 
     fetch(`${URL_HUB}voting-dashboard/get-dashboard/3`)
@@ -39,7 +39,7 @@ function App() {
       .then((response) => {
         const { data } = response
         console.log("🚀 ~ .then ~ data:", data)
-        // setPanel3(data?.EmbedUrl)
+        setPanel3(data?.EmbedUrl)
       });
 
 
@@ -54,7 +54,9 @@ function App() {
       <div className='h-12 flex flex-row'>
 
       </div>
-      <Panel url={panel1}></Panel>
+      {panel1 != '' && <Panel url={panel1}></Panel>}
+      {panel2 != '' && <Panel url={panel2}></Panel>}
+      {panel3 != '' && <Panel url={panel3}></Panel>}
     </div>
   )
 }
