@@ -5,14 +5,23 @@ function App() {
   const [panel1, setPanel1] = useState("");
   const [panel2, setPanel2] = useState("");
   const [panel3, setPanel3] = useState("");
+
   useEffect(() => {
-    fetch('https://chivo-hub-dev.api.chivowallet.com/api/v1/')
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-      });
+    // fetch('https://chivo-hub-dev.api.chivowallet.com/api/v1/voting-dashboard/get-dashboard/5dcb4597-0a89-4986-a8eb-ce7168d3d635')
+    //   .then((res) => {
+    //     return res.json();
+
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //     setPanel1('hello world')
+    //     setPanel2('hello world')
+    //     setPanel3('hello world')
+    // });
+
+    setPanel1('hello world')
+    setPanel2('hello world')
+    setPanel3('hello world')
   }, []);
 
   return (
@@ -26,13 +35,13 @@ function App() {
         </TabList>
 
         <TabPanel>
-          <h2>Any content 1</h2>
+          {panel1}
         </TabPanel>
         <TabPanel>
-          <h2>Any content 2</h2>
+          {panel2}
         </TabPanel>
         <TabPanel>
-          <h2>Any content 3</h2>
+          {panel3}
         </TabPanel>
       </Tabs>
     </div>
