@@ -1,6 +1,6 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { createEmbeddingContext } from "amazon-quicksight-embedding-sdk";
 
 type FrameOptions = {
