@@ -9,26 +9,36 @@ type FrameOptions = {
     withIframePlaceholder?: boolean | HTMLElement;
     className?: string;
 };
-function Panel({ url }: { url: string }) {
+function Panel({ index }: { index: number }) {
+    const URL_HUB = 'https://chivo-hub-dev.api.chivowallet.com/api/v1/'
+
     useEffect(() => {
+        fetch(`${URL_HUB}voting-dashboard/get-dashboard/${index}`)
+            .then((res) => {
+                return res.json();
+            })
+            .then((response) => {
+                const { data } = response
+                const embeddingContext = createEmbeddingContext();
+                embeddingContext.then(({ embedDashboard }) => {
+                    const container = document.querySelector("#iframe") as HTMLElement;
+                    // Create an embedding configuration
+                    const config: FrameOptions = {
+                        url: data?.EmbedUrl,
+                        container: container,
+                    };
 
-        const embeddingContext = createEmbeddingContext();
-        embeddingContext.then(({ embedDashboard }) => {
-            const container = document.querySelector("#iframe") as HTMLElement;
-            // Create an embedding configuration
-            const config: FrameOptions = {
-                url: url,
-                container: container,
-            };
-
-            // Embed the QuickSight dashboard
-            embedDashboard(config)
-                .then(() => {
-                })
-                .catch((error) => {
-                    console.log("🚀 ~ embeddingContext.then ~ error:", error)
+                    // Embed the QuickSight dashboard
+                    embedDashboard(config)
+                        .then(() => {
+                        })
+                        .catch((error) => {
+                            console.log("🚀 ~ embeddingContext.then ~ error:", error)
+                        });
                 });
-        });
+
+            });
+
 
 
     }, []);
