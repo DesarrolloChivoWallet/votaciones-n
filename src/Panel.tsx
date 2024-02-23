@@ -10,7 +10,7 @@ type FrameOptions = {
     className?: string;
 };
 function Panel({ index }: { index: number }) {
-    const URL_HUB = 'https://chivo-hub-dev.api.chivowallet.com/api/v1/'
+    const URL_HUB = 'https://chivo-hub.api.chivowallet.com/api/v1/'
 
     useEffect(() => {
         fetch(`${URL_HUB}voting-dashboard/get-dashboard/${index}`)
