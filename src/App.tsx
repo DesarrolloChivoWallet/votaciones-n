@@ -13,9 +13,9 @@ function App() {
     <div className='p-4 h-screen w-full'>
       {/* component */}
       <div className='h-12 flex flex-wrap gap-x-4 mb-2'>
-        <button onClick={() => { setView1(true); setView2(false); setView3(false) }} className='bg-gray-200 p-2 rounded-md'>Resultados de votos general</button>
-        <button onClick={() => { setView1(false); setView2(true); setView3(false) }} className='bg-gray-200 p-2 rounded-md'>Resultados de votos</button>
-        <button onClick={() => { setView1(false); setView2(false); setView3(true) }} className='bg-gray-200 p-2 rounded-md'>Alertas</button>
+        <button onClick={() => { setView1(true); setView2(false); setView3(false) }} className='bg-gray-200 p-2 rounded-md'>Panel 1</button>
+        <button onClick={() => { setView1(false); setView2(true); setView3(false) }} className='bg-gray-200 p-2 rounded-md'>Panel 2</button>
+        <button onClick={() => { setView1(false); setView2(false); setView3(true) }} className='bg-gray-200 p-2 rounded-md'>Panel 3</button>
       </div>
       {view1 && <Panel index={1}></Panel>}
       {view2 && <Panel index={2}></Panel>}
